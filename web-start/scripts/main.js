@@ -54,7 +54,13 @@ function FriendlyChat() {
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 FriendlyChat.prototype.initFirebase = function() {
-  // TODO(DEVELOPER): Initialize Firebase.
+  // Initialize Firebase.
+  // Shortcut to firebase SDK features
+  this.auth = firebase.auth();
+  this.storage = firebase.storage();
+  this.database = firebase.database();
+  // Initiates Firebase auth and listens to state change
+  this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
 };
 
 // Loads chat messages history and listens for upcoming ones.
